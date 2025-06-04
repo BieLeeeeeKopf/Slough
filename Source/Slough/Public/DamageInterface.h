@@ -23,5 +23,5 @@ class SLOUGH_API IDamageInterface
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Damage")
-	void TakeDamage(float Damage,AController* EventInstigator,AActor* DamageCauser, TSubclassOf<UDamageType> DamageTpyeClass);
+	void TakeDamage(float Damage,AController* EventInstigator,AActor* DamageCauser, TSubclassOf<UDamageType> DamageTpyeClass , FHitResult Hit);
 };
