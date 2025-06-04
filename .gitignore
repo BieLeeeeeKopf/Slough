@@ -8,6 +8,7 @@ Saved/
 Content/Collections/
 Content/Developers/
 Plugins/*/Binaries/
+Plugins/*/*/Binaries/
 Plugins/*/Intermediate/
 WindowsNoEditor/
 MacNoEditor/
