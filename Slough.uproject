@@ -22,10 +22,6 @@
 			]
 		},
 		{
-			"Name": "UnLuaTestSuite",
-			"Enabled": true
-		},
-		{
 			"Name": "ChaosVehiclesPlugin",
 			"Enabled": true
 		},

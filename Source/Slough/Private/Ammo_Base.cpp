@@ -16,6 +16,7 @@ AAmmo_Base::AAmmo_Base()
     CollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("Collision"));
     CollisionComponent->InitSphereRadius(5.0f);
     CollisionComponent->SetCollisionProfileName(TEXT("Projectile"));
+    CollisionComponent->OnComponentHit.AddDynamic(this, &AAmmo_Base::OnHit);
     RootComponent = CollisionComponent;
 
     // 创建可见网格组件
@@ -49,15 +50,22 @@ void AAmmo_Base::Tick(float DeltaTime)
 
 void AAmmo_Base::OnHit_Implementation(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-    if (!OtherActor) return;
+    if (!OtherActor) {
+        Destroy();
+        return;
+    }
 
     //碰撞后播放对应材质的子弹碰撞声音
     UE_LOG(LogTemp, Log, TEXT("Hit Actor is: %s"), *OtherActor->GetName());
 
     //子弹造成伤害
-    UHealthComponent* currHealth = OtherActor->GetComponentByClass<UHealthComponent>();
-    if (!currHealth) return;
-    IDamageInterface::Execute_TakeDamage(currHealth,Damage, GetInstigatorController(),GetInstigator(),DamageType);
-    
+    UHealthComponent* currHealth = OtherActor->FindComponentByClass<UHealthComponent>();
+    if (!currHealth) {
+        Destroy();
+        UE_LOG(LogTemp, Log, TEXT("Hit Actor is Not Have HealthComponent"));
+        return;
+    }
+    IDamageInterface::Execute_TakeDamage(currHealth, Damage, GetInstigatorController(), GetInstigator(), DamageType, Hit);
+    Destroy();
 }
 
