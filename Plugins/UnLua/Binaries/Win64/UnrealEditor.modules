@@ -1,8 +1,0 @@
-{
-	"BuildId": "27405482",
-	"Modules": 
-	{
-		"UnLua": "UnrealEditor-UnLua.dll",
-		"UnLuaEditor": "UnrealEditor-UnLuaEditor.dll"
-	}
-}
