@@ -22,3 +22,5 @@ IOS/
 /Plugins/Developer/RiderLink
 /Benchmark
 /Plugins/UnLua/Source/UnLuaDefaultParamCollectorUbtPlugin/obj
+*_test*
+*_test/
