@@ -25,7 +25,6 @@ public:
 	// 碰撞组件
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bullet")
 	class USphereComponent* CollisionComponent;
-
 	// 可见网格
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bullet")
 	class UStaticMeshComponent* BulletMesh;
